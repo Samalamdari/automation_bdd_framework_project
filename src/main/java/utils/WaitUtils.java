@@ -23,7 +23,6 @@ public class WaitUtils {
         int timeoutsInSecond = Integer.parseInt(ConfigManager.getProperty("waitInSeconds"));
         System.out.println("Is wait enable: " + enableWait);
         System.out.println("Time in seconds: " + timeoutsInSecond);
-
         if (enableWait && timeoutsInSecond > 0) {
             try {
                 Thread.sleep(timeoutsInSecond * 1000L);
@@ -43,15 +42,12 @@ public class WaitUtils {
             case VISIBLE:
                 return wait.until(ExpectedConditions.visibilityOf(webElement));
             case NONE:
-
             default:
                 return webElement;
         }
     }
-
     public static WebElement applyWait(WebDriver driver, WebElement webElement, WaitStrategy waitStrategy, By element) {
         WebDriverWait wait = new WebDriverWait(driver,getTimeOut());
-
         switch (waitStrategy) {
             case CLICKABLE:
                 return wait.until(ExpectedConditions.elementToBeClickable(webElement));
@@ -64,4 +60,10 @@ public class WaitUtils {
                 return webElement;
         }
     }
+
+    public static WebElement waitForPresence(WebDriver driver, By element ) {
+        WebDriverWait wait = new WebDriverWait(driver, getTimeOut());
+        return wait.until(ExpectedConditions.presenceOfElementLocated(element));
+    }
+
 }

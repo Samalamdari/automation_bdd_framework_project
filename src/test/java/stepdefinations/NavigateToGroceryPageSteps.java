@@ -1,6 +1,5 @@
 package stepdefinations;
 
-
 import base.BaseTest;
 import enums.WaitStrategy;
 import io.cucumber.java.After;
@@ -19,22 +18,23 @@ import utils.WaitUtils;
 
 import java.time.Duration;
 
-public class NavigateToLoginPageSteps extends Base {
+public class NavigateToGroceryPageSteps extends Base {
 
-     LandingPage flipKartLandingPage;
+       LandingPage flipKartLandingPage;
 
-    @Given("I am on the flipkart web page login")
-    public void i_am_on_the_flipkart_web_page_login() {
+    @Given("I am on the flipkart web page grocery")
+    public void I_am_on_the_flipkart_web_page_grocery(){
     }
 
-    @When("I click on login button")
-    public void i_click_on_login_button() throws InterruptedException {
+    @When("I click on the grocery Button")
+    public void I_click_on_the_grocery_button() throws InterruptedException {
         this.flipKartLandingPage = new LandingPage(DriverManager.getDriver());
-        WaitUtils.applyWait(driver, flipKartLandingPage.loginButton, WaitStrategy.CLICKABLE);
-        flipKartLandingPage.clickOnLoginButton();
+        WaitUtils.applyWait(driver, flipKartLandingPage.groceryButton, WaitStrategy.CLICKABLE);
+        flipKartLandingPage.clickOnGroceryButton();
+
     }
-    @Then("I should see login page")
-    public void i_should_see_login_page() throws InterruptedException {
+    @Then("I should see grocery page")
+    public void I_should_see_grocery_page() throws InterruptedException {
         Thread.sleep(2000);
     }
 }
